@@ -6,13 +6,15 @@ import requests
 # .envファイルの内容を読み込見込む
 load_dotenv()
 
-database_id = os.environ["NOTION_DATABASE_ID"]
+database_id = os.environ['NOTION_DATABASE_ID']
 token = os.environ["NOTION_TOKEN"]
 
-url = "https://api.notion.com/v1/databases/" + database_id + "/query/"
+url = "https://api.notion.com/v1/databases/" + "cff5e8e3016e43dc9549e472067877c2"+ "/query/"
 
 # os.environを用いて環境変数を表示させます
-print(os.environ["NOTION_DATABASE_ID"])
+print(os.environ['NOTION_DATABASE_ID'])
+
+print(url)
 
 # 送信するデータ（JSON形式）
 data = {}
@@ -38,7 +40,9 @@ else:
     print(response.text)  # エラーメッセージなどの詳細を表示
     exit()
 
-print("【メール一覧】" + str(len(result["results"])) + "\n")
+print("【メール一覧】" + str(len(result["results"]))+"\n")
+
 for row in result["results"]:
     print(row["properties"]["メール"]["email"])
+    # print(row["properties"])
 print("\n")

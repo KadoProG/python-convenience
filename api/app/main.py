@@ -8,17 +8,21 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
+
 class Item(BaseModel):
     name: str
     price: float
+
 
 @app.post("/items")
 def update_item(item: Item):
     return {"item_name": item.name, "twice price": item.price * 2}
 
+
 @app.get("/")
 async def root():
-  return {"message": "Hello World"}
+    return {"message": "Hello World"}
+
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str = None):

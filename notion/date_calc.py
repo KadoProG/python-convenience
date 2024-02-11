@@ -10,9 +10,10 @@ text_re = text.split("\n\n")
 
 arr_min = []
 
+
 def calc_time(time_range):
     # 入力文字列を分割して開始時間と終了時間に分ける
-    start_time_str, end_time_str = time_range.split('-')
+    start_time_str, end_time_str = time_range.split("-")
 
     # 時間文字列をdatetimeオブジェクトに変換
     format_str = "%H:%M"
@@ -35,14 +36,14 @@ for te in text_re:
     text_other = ""
     for childNo in range(1, len(te.split(" "))):
         text_other += te.split(" ")[childNo]
-        
+
     time_sum += min
     arr_min.append(min)
     re_te = te.split(" ")[0] + " " + str(min) + "min"  # " + te.split(" ")[1]
-    result_text += re_te + " "+ text_other + "\n\n"
+    result_text += re_te + " " + text_other + "\n\n"
 
-result_text += "+".join([f'{num}'for num in arr_min]) + "=" + str(time_sum) + "min"
-result_text +=" " + str(int(time_sum / 60)) + "h" + str(int(time_sum % 60)) + "min"
+result_text += "+".join([f"{num}" for num in arr_min]) + "=" + str(time_sum) + "min"
+result_text += " " + str(int(time_sum / 60)) + "h" + str(int(time_sum % 60)) + "min"
 
 print(result_text)
 
